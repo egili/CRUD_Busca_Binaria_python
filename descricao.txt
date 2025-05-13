@@ -1,0 +1,11 @@
+Precisamos criar um sistema de CRUD que realize suas operações em lista usando busca binária
+
+único container que podemos usar é lista 
+
+o programa vai se basear em uma listona principal composta de N sublistas que possuem dados salvos
+
+talvez em forma de matriz (ainda a confirmar)
+
+vamos dividir as atribuções para cada um
+
+TUDO o que precisamos fazer já está descrito no arquivo que o professor deu (v1_dadaPeloProfessor)

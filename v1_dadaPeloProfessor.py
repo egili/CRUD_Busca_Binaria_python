@@ -30,9 +30,11 @@ def apresenteSe ():
     print('|                                                             |')
     print('| AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |')
     print('|                                                             |')
-    print('| Profs André Carvalho & J.G.Pícolo                           |')
+    print('| Brenda Maia Bergamasco                                      |')
+    print('| Eliseu Pereira Gili - 25009281                              |')
+    print('| Pietra Façanha Bortolato -                                  |')
     print('|                                                             |')
-    print('| Versão 1.0 de 12/maio/2025                                  |')
+    print('| Versão 2.0 de /maio/2025                                    |')
     print('|                                                             |')
     print('+-------------------------------------------------------------+')
 

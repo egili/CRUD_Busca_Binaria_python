@@ -12,10 +12,10 @@ def apresenteSe ():
     print('|                                                             |')
     print('+-------------------------------------------------------------+')
 
-def umTexto (solicitacao, mensagem, valido):
-    digitouDireito=False
+def umTexto(solicitacao, mensagem, valido):
+    digitouDireito = False
     while not digitouDireito:
-        txt=input(solicitacao)
+        txt = input(solicitacao)
 
         if txt not in valido:
             print(mensagem,'- Favor redigitar...')
@@ -27,12 +27,12 @@ def umTexto (solicitacao, mensagem, valido):
 def opcaoEscolhida (mnu):
     print()
 
-    opcoesValidas=[]
-    posicao=0
-    while posicao<len(mnu):
-        print (posicao+1,') ',mnu[posicao],sep='')
-        opcoesValidas.append(str(posicao+1))
-        posicao+=1
+    opcoesValidas = []
+    posicao = 0
+    while posicao < len(mnu):
+        print (posicao + 1,') ',mnu[posicao], sep='')
+        opcoesValidas.append(str(posicao + 1))
+        posicao += 1
 
     print()
     return umTexto('Qual é a sua opção? ', 'Opção inválida', opcoesValidas)
@@ -45,20 +45,20 @@ uma lista contendo False e a posição onde inserir,
 aquilo que foi buscado, mas nao foi encontrado,
 mantendo a ordenação da lista.
 '''
-def ondeEsta (nom,agd):
-    inicio=0
-    final =len(agd)-1
+def ondeEsta(nom, agd):
+    inicio = 0
+    final = len(agd) - 1
     
     # continue a implementação que, entre outras coisas, deverá
     # calcular o meio, conforme segue:
-    meio=(inicio+final)//2
+    meio = (inicio + final) // 2
         
     # a função deverá retornar a lista [True,meio] quando encontrar o
     # nome procurado ou então a lista [False,inicio], quando não
     # encontrar o nome procurado.
 
 
-def cadastrar (agd):
+def cadastrar(agd):
     print('Opção não implementada!')
     # Ficar solicitando a digitação de um nome a ser excluido da agenda,
     # até que um nome NÃO CADASTRADO seja digitado.
@@ -79,7 +79,7 @@ def cadastrar (agd):
     # A função deverá terminar com uma mensagem informando cadastro
     # realizado com sucesso ou cadastro não realizado.
 
-def procurar (agd):
+def procurar(agd):
     print('Opção não implementada!')
     # Ficar pedindo para digitar um nome até digitar um nome que existe
     # cadastrado;
@@ -88,7 +88,7 @@ def procurar (agd):
     # O usuário poderá desistir de procurar, escrevendo "cancela" no
     # momento de digitar o nome a ser procurado.
 
-def atualizar (agd):
+def atualizar(agd):
     print('Opção não implementada!')
     # Ficar solicitando a digitação de um nome a ser excluido da agenda,
     # até que um nome cadastrado seja digitado.
@@ -105,14 +105,14 @@ def atualizar (agd):
     # ou o celular ou ainda o e_mail (caso o usuário tenha optado por
     # uma dessas atualizações, naturalmente).
 
-def listar (agd):
+def listar(agd):
     print('Opção não implementada!')
     # implementar aqui a listagem de todos os dados de todos
     # os contatos cadastrados
     # printar aviso de que não há contatos cadastrados se
     # esse for o caso
 
-def excluir (agd):
+def excluir(agd):
     print('Opção não implementada!')
     # Ficar solicitando a digitação de um nome a ser excluido da agenda,
     # até que um nome cadastrado seja digitado.
@@ -133,14 +133,16 @@ def excluir (agd):
 
 apresenteSe()
 
-agenda=[] # essa é a listona que deverá conter listinhas
+agenda = [] # essa é a listona que deverá conter listinhas
 
-menu=['Cadastrar Contato',\
-        'Procurar Contato',\
-        'Atualizar Contato',\
-        'Listar Contatos',\
-        'Excluir Contato',\
-        'Sair do Programa']
+menu=[
+    'Cadastrar Contato',\
+    'Procurar Contato',\
+    'Atualizar Contato',\
+    'Listar Contatos',\
+    'Excluir Contato',\
+    'Sair do Programa'
+]
 
 deseja_terminar_o_programa = False
 while not deseja_terminar_o_programa:
@@ -156,7 +158,7 @@ while not deseja_terminar_o_programa:
         listar(agenda)
     elif opcao == 5:
         excluir(agenda)
-    else: # opcao == 6
+    else: 
         deseja_terminar_o_programa = True
         
 print('PROGRAMA ENCERRADO COM SUCESSO!')

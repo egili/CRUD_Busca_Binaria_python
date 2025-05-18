@@ -36,4 +36,3 @@ Projeto desenvolvido em grupo para a disciplina de algoritmos de computação do
    </table>
 
 <br>
-<hr>

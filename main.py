@@ -68,26 +68,31 @@ def ondeEsta(nom, agd):
 
 ##############################################
     while inicio <= final:
+        
         meio = (inicio + final) // 2
         nome_meio = agd[meio][0].lower()
+        
         if nom_lower == nome_meio:
             return [True, meio]
         elif nom_lower < nome_meio:
             final = meio - 1
         else:
             inicio = meio + 1
-            
+
     return [False, inicio]
 
-
-def cadastrar(agd):    
+def cadastrar(agd):
     while True:
-        nome = obtem_nome_validado("Digite o nome: ")
+        nome = obtem_nome_validado("Digite o nome (ou 'cancela' para sair): ")
+
+        if nome.lower() == 'cancela':
+            print("Cadastro não realizado.")
+            return
 
         achou, pos = ondeEsta(nome, agd)
 
         if achou:
-            print("Este nome já está cadastrado. Tente outro")
+            print("Este nome já está cadastrado. Tente novamente")
         else:
             break
 

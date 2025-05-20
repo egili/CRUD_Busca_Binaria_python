@@ -114,9 +114,9 @@ def atualizar(agd):
                 deseja_terminar_o_programa=True
 
             
-            for niversario in agd:
-                if niversario[0]== nome:
-                    niversario[1]= novo_aniversario
+            for contato in agd:
+                if contato[0]== nome:
+                    contato[1]= novo_aniversario
                     print('Atualizado com sucesso')
                 
             
@@ -126,9 +126,9 @@ def atualizar(agd):
             if novo_endereco='cancela':
                 deseja_terminar_o_programa=True
 
-            for endrereco in agd:
-                if endrereco[0]== nome:
-                    endrereco[2]= novo_endereco
+            for contato in agd:
+                if contato[0]== nome:
+                    contato[2]= novo_endereco
                     print('Atualizado com sucesso')
             
         elif opcao == 3:
@@ -137,9 +137,9 @@ def atualizar(agd):
             if novo_telefone='cancela':
                 deseja_terminar_o_programa=True
 
-            for telelefone in agd:
-                if telelefone[0]==nome:
-                    telelefone[3]= novo_telefone
+            for contato in agd:
+                if contato[0]==nome:
+                    contato[3]= novo_telefone
                     print('Atualizado com sucesso')
 
             
@@ -149,9 +149,9 @@ def atualizar(agd):
             if novo_celular='cancela':
                 deseja_terminar_o_programa=True
 
-            for cellular in agd:
-                if cellular[0]==nome:
-                    cellular[4]= novo_telefone
+            for contato in agd:
+                if contato[0]==nome:
+                    contato[4]= novo_telefone
                     print('Atualizado com sucesso')
             
         elif opcao == 5:
@@ -160,9 +160,9 @@ def atualizar(agd):
             if novo_email='cancela':
                 deseja_terminar_o_programa=True
 
-            for emaiil in agd:
-                if emaiil[0]==nome:
-                    emaiil[5]= novo_email
+            for contato in agd:
+                if contato[0]==nome:
+                    contato[5]= novo_email
                     print('Atualizado com sucesso')
 
         

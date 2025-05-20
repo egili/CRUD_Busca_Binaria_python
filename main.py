@@ -155,7 +155,7 @@ def atualizar(agd):
                     print('Atualizado com sucesso')
             
         elif opcao == 5:
-            novo_email=input('Digite o novo email')
+            novo_email=input('Digite o novo email ')
 
             if novo_email='cancela':
                 deseja_terminar_o_programa=True

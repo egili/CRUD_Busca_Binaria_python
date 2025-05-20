@@ -6,7 +6,7 @@ def apresenteSe ():
     print('|                                                             |')
     print('| Brenda Maia Bergamasco -                                    |')
     print('| Eliseu Pereira Gili - 25009281                              |')
-    print('| Pietra Façanha Bortolato -                                  |')
+    print('| Pietra Façanha Bortolato - 25002436                         |')
     print('|                                                             |')
     print('| Versão 2.0 de XX/maio/2025                                  |')
     print('|                                                             |')
@@ -90,8 +90,11 @@ def procurar(agd):
 
 def atualizar(agd):
     print('Opção não implementada!')
+    
+    nome = ''
     # Ficar solicitando a digitação de um nome a ser excluido da agenda,
     # até que um nome cadastrado seja digitado.
+    
     # Ficar mostrando então um SUBMENU oferecendo as opções de atualizar
     # aniversário, ou endereco, ou telefone, ou celular, ou email, ou
     # finalizar as atualizações; ficar pedindo para digitar a opção até
@@ -106,7 +109,22 @@ def atualizar(agd):
     # uma dessas atualizações, naturalmente).
 
 def listar(agd):
-    print('Opção não implementada!')
+    if agd == [] or len(agd) == 0:
+        print('Não há contatos cadastrados!')
+        return 
+    
+    for contato in agd:
+        print('Nome: ',contato[0])
+        print('Aniversário: ',contato[1])
+        print('Endereço: ',contato[2])
+        print('Telefone: ',contato[3])
+        print('Celular: ',contato[4])
+        print('E-mail: ',contato[5])
+        print()
+        
+        
+        
+    
     # implementar aqui a listagem de todos os dados de todos
     # os contatos cadastrados
     # printar aviso de que não há contatos cadastrados se

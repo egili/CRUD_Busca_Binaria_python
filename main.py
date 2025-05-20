@@ -4,6 +4,8 @@ from email_utils   import pedir_email
 from address_utils import pedir_endereco
 from phone_utils   import pedir_telefone, pedir_celular
 
+# TODO adicionar regex
+
 def apresenteSe ():
     print('+-------------------------------------------------------------+')
     print('|                                                             |')

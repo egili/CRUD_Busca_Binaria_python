@@ -94,6 +94,82 @@ def atualizar(agd):
     nome = ''
     # Ficar solicitando a digitação de um nome a ser excluido da agenda,
     # até que um nome cadastrado seja digitado.
+    submenu=[
+    'Atualizar Aniversário',\
+    'Atualizar Endereço',\
+    'Atualizar Telefone',\
+    'Atualizar Celular',\
+    'Atualizar Email',\
+    'Finalizar Atualizações'
+]
+
+    deseja_terminar_o_programa = False
+    while not deseja_terminar_o_programa:
+        opcao = int(opcaoEscolhida(submenu))
+
+        if opcao == 1:
+            novo_aniversario=input('Digite a nova data de aniversário ')
+            
+            if novo_aniversario='cancela':
+                deseja_terminar_o_programa=True
+
+            
+            for niversario in agd:
+                if niversario[0]== nome:
+                    niversario[1]= novo_aniversario
+                    print('Atualizado com sucesso')
+                
+            
+        elif opcao == 2:
+            novo_endereco=input('Digite o novo endereço ')
+
+            if novo_endereco='cancela':
+                deseja_terminar_o_programa=True
+
+            for endrereco in agd:
+                if endrereco[0]== nome:
+                    endrereco[2]= novo_endereco
+                    print('Atualizado com sucesso')
+            
+        elif opcao == 3:
+            novo_telefone=input('Digite o novo telefone ')
+
+            if novo_telefone='cancela':
+                deseja_terminar_o_programa=True
+
+            for telelefone in agd:
+                if telelefone[0]==nome:
+                    telelefone[3]= novo_telefone
+                    print('Atualizado com sucesso')
+
+            
+        elif opcao == 4:
+            novo_celular=input('Digite o novo celular ')
+
+            if novo_celular='cancela':
+                deseja_terminar_o_programa=True
+
+            for cellular in agd:
+                if cellular[0]==nome:
+                    cellular[4]= novo_telefone
+                    print('Atualizado com sucesso')
+            
+        elif opcao == 5:
+            novo_email=input('Digite o novo email')
+
+            if novo_email='cancela':
+                deseja_terminar_o_programa=True
+
+            for emaiil in agd:
+                if emaiil[0]==nome:
+                    emaiil[5]= novo_email
+                    print('Atualizado com sucesso')
+
+        
+            
+        else: 
+            print('Atualizações finalizadas')
+            
     
     # Ficar mostrando então um SUBMENU oferecendo as opções de atualizar
     # aniversário, ou endereco, ou telefone, ou celular, ou email, ou

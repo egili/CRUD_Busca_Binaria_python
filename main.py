@@ -94,79 +94,76 @@ def atualizar(agd):
     nome = ''
     # Ficar solicitando a digitação de um nome a ser excluido da agenda,
     # até que um nome cadastrado seja digitado.
-    submenu=[
-    'Atualizar Aniversário',\
-    'Atualizar Endereço',\
-    'Atualizar Telefone',\
-    'Atualizar Celular',\
-    'Atualizar Email',\
-    'Finalizar Atualizações'
-]
+    submenu = [
+        'Atualizar Aniversário',\
+        'Atualizar Endereço',\
+        'Atualizar Telefone',\
+        'Atualizar Celular',\
+        'Atualizar Email',\
+        'Finalizar Atualizações'
+    ]
 
     deseja_terminar_o_programa = False
     while not deseja_terminar_o_programa:
         opcao = int(opcaoEscolhida(submenu))
 
         if opcao == 1:
-            novo_aniversario=input('Digite a nova data de aniversário ')
+            novo_aniversario = input('Digite a nova data de aniversário ')
             
-            if novo_aniversario='cancela':
-                deseja_terminar_o_programa=True
+            if novo_aniversario == 'cancela':
+                deseja_terminar_o_programa = True
 
             
             for contato in agd:
-                if contato[0]== nome:
-                    contato[1]= novo_aniversario
+                if contato[0] == nome:
+                    contato[1] = novo_aniversario
                     print('Atualizado com sucesso')
                 
             
         elif opcao == 2:
             novo_endereco=input('Digite o novo endereço ')
 
-            if novo_endereco='cancela':
-                deseja_terminar_o_programa=True
+            if novo_endereco == 'cancela':
+                deseja_terminar_o_programa = True
 
             for contato in agd:
-                if contato[0]== nome:
-                    contato[2]= novo_endereco
+                if contato[0] == nome:
+                    contato[2] = novo_endereco
                     print('Atualizado com sucesso')
             
         elif opcao == 3:
             novo_telefone=input('Digite o novo telefone ')
 
-            if novo_telefone='cancela':
-                deseja_terminar_o_programa=True
+            if novo_telefone == 'cancela':
+                deseja_terminar_o_programa = True
 
             for contato in agd:
-                if contato[0]==nome:
-                    contato[3]= novo_telefone
+                if contato[0] == nome:
+                    contato[3] = novo_telefone
                     print('Atualizado com sucesso')
 
             
         elif opcao == 4:
-            novo_celular=input('Digite o novo celular ')
+            novo_celular = input('Digite o novo celular ')
 
-            if novo_celular='cancela':
+            if novo_celular == 'cancela':
                 deseja_terminar_o_programa=True
 
             for contato in agd:
-                if contato[0]==nome:
-                    contato[4]= novo_telefone
+                if contato[0] == nome:
+                    contato[4] = novo_telefone
                     print('Atualizado com sucesso')
             
         elif opcao == 5:
-            novo_email=input('Digite o novo email ')
+            novo_email = input('Digite o novo email ')
 
-            if novo_email='cancela':
-                deseja_terminar_o_programa=True
+            if novo_email == 'cancela':
+                deseja_terminar_o_programa = True
 
             for contato in agd:
-                if contato[0]==nome:
-                    contato[5]= novo_email
-                    print('Atualizado com sucesso')
-
-        
-            
+                if contato[0] == nome:
+                    contato[5] = novo_email
+                    print('Atualizado com sucesso')            
         else: 
             print('Atualizações finalizadas')
             

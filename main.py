@@ -257,7 +257,7 @@ def listar(agd):
 
 
 def excluir(agd):
-    if agd == [] or len(agd) == 0:
+    if agd == [] or len(agd) == 0:  
         print('Não há contatos cadastrados!')
         return 
     
@@ -267,7 +267,7 @@ def excluir(agd):
             print("Exclusão cancelada.")
             break
 
-    achou, pos = ondeEsta(nome, agd)
+    achou, pos = ondeEsta(nome, agd) # TODO este item esta mal identado, precisa de um nivel a mais
 
         if achou:
             contato = agd[pos]
@@ -285,13 +285,11 @@ def excluir(agd):
             print("Contato excluído com sucesso.")
         else:
             print("Contato não excluído.")
-        break
+        break  # TODO: Esse break está fora do if achou. Vai sair do loop mesmo se não achou.
 
-    else:
+    else:  # TODO: Esse else está solto. Só funciona com for/while sem break, mas está mal posicionado aqui.
         print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
-    
- 
-    
+
 apresenteSe()
 
 agenda = []

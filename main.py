@@ -11,7 +11,7 @@ def apresenteSe ():
     print('|                                                             |')
     print('| AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |')
     print('|                                                             |')
-    print('| Brenda Maia Bergamasco -                                    |')
+    print('| Brenda Maia Bergamasco - 25010054                           |')
     print('| Eliseu Pereira Gili - 25009281                              |')
     print('| Pietra Façanha Bortolato - 25002436                         |')
     print('|                                                             |')
@@ -243,7 +243,7 @@ def excluir(agd):
     # de exclusão bem sucedida deveria ser mostrada. Não sendo confirmada,
     # uma mensagem de exclusão não realizada deveria ser mostrada.
     # O usuário poderá desistir de excluir, escrevendo "cancela" no
-    # momento de digitar o nome a ser excluído.
+    # momento de digitar o nome a ser excluído.                                                                            b  vm
     
 apresenteSe()
 

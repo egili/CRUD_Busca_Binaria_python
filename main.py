@@ -1,3 +1,10 @@
+from date_utils    import pedir_data
+from name_utils    import obtem_nome_validado
+from email_utils   import pedir_email
+from address_utils import pedir_endereco
+from phone_utils   import pedir_telefone, pedir_celular
+
+# TODO adicionar regex
 
 def apresenteSe ():
     print('+-------------------------------------------------------------+')
@@ -18,9 +25,9 @@ def umTexto(solicitacao, mensagem, valido):
         txt = input(solicitacao)
 
         if txt not in valido:
-            print(mensagem,'- Favor redigitar...')
+            print(mensagem, '- Favor redigitar...')
         else:
-            digitouDireito=True
+            digitouDireito = True
 
     return txt
 
@@ -56,28 +63,51 @@ def ondeEsta(nom, agd):
     # a função deverá retornar a lista [True,meio] quando encontrar o
     # nome procurado ou então a lista [False,inicio], quando não
     # encontrar o nome procurado.
+    
+    inicio = 0
+    final = len(agd) - 1
+    nom_lower = nom.lower()
 
+##############################################
+    while inicio <= final:
+        
+        meio = (inicio + final) // 2
+        nome_meio = agd[meio][0].lower()
+        
+        if nom_lower == nome_meio:
+            return [True, meio]
+        elif nom_lower < nome_meio:
+            final = meio - 1
+        else:
+            inicio = meio + 1
+
+    return [False, inicio]
 
 def cadastrar(agd):
-    print('Opção não implementada!')
-    # Ficar solicitando a digitação de um nome a ser excluido da agenda,
-    # até que um nome NÃO CADASTRADO seja digitado.
-    # Solicitar então a digitação do aniversario, do endereao, do
-    # telefone (fixo), do celular e do e_mail da pessoa, cujo nome foi
-    # digitado.
-    # Gerar então uma lista conforme abaixo:
-    # contato=[nome,aniversario,endereco,telefone,celular,email]
-    # incluindo essa listinha chamada contato na listona chamada agd,
-    # lembrando que agd é parâmetro formal desta função; o parâmetro
-    # real que é fornecido no programa ao chamar esta função se chama
-    # agenda.
-    # Na listona, as listinhas deverão estar em ordem alfabética de
-    # nome e o local apropriadoa para a inserção deverá ser obtido
-    # usando a função ondeEsta, que realiza uma busca binária.
-    # O usuário poderá desistir de cadastrar, escrevendo "cancela" no
-    # momento de digitar o nome a ser cadastrado.
-    # A função deverá terminar com uma mensagem informando cadastro
-    # realizado com sucesso ou cadastro não realizado.
+    while True:
+        nome = obtem_nome_validado("Digite o nome (ou 'cancela' para sair): ")
+
+        if nome.lower() == 'cancela':
+            print("Cadastro não realizado.")
+            return
+
+        achou, pos = ondeEsta(nome, agd)
+
+        if achou:
+            print("Este nome já está cadastrado. Tente novamente")
+        else:
+            break
+
+    aniversario = pedir_data("Digite o aniversário: ")
+    endereco    = pedir_endereco("Digite o endereço: ")
+    telefone    = pedir_telefone("Digite o telefone fixo: ")
+    celular     = pedir_celular("Digite o celular: ")
+    email       = pedir_email("Digite o e-mail: ")
+
+    contato = [ nome, aniversario, endereco, telefone, celular, email ]
+    
+    agd.insert(pos, contato)
+    print("Contato cadastrado com sucesso!")
 
 def procurar(agd):
     print('Opção não implementada!')
@@ -215,18 +245,11 @@ def excluir(agd):
     # O usuário poderá desistir de excluir, escrevendo "cancela" no
     # momento de digitar o nome a ser excluído.
     
-    
-# daqui para cima, definimos subprogramas (ou módulos, é a mesma coisa)
-# daqui para baixo, implementamos o programa
-# (nosso CRUD, C=create(cadastrar), R=read(recuperar),
-# U=update(atualizar), D=delete(remover,apagar)
-
-
 apresenteSe()
 
-agenda = [] # essa é a listona que deverá conter listinhas
+agenda = []
 
-menu=[
+menu = [
     'Cadastrar Contato',\
     'Procurar Contato',\
     'Atualizar Contato',\

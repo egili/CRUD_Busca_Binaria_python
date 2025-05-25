@@ -4,30 +4,30 @@ from email_utils   import pedir_email
 from address_utils import pedir_endereco
 from phone_utils   import pedir_telefone, pedir_celular
 
-# TODO adicionar regex
-
 def apresenteSe ():
     print('+-------------------------------------------------------------+')
     print('|                                                             |')
     print('| AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |')
     print('|                                                             |')
-    print('| Brenda Maia Bergamasco -                                    |')
-    print('| Eliseu Pereira Gili - 25009281                              |')
+    print('| Brenda Maia Bergamasco   -                                  |')
+    print('| Eliseu Pereira Gili      - 25009281                         |')
     print('| Pietra Façanha Bortolato - 25002436                         |')
     print('|                                                             |')
-    print('| Versão 2.0 de XX/maio/2025                                  |')
+    print('| Versão 2.0 de 24/maio/2025                                  |')
     print('|                                                             |')
     print('+-------------------------------------------------------------+')
 
 def umTexto(solicitacao, mensagem, valido):
-    digitouDireito = False
-    while not digitouDireito:
+    
+    digitou_direito = False
+    
+    while not digitou_direito:
         txt = input(solicitacao)
 
         if txt not in valido:
             print(mensagem, '- Favor redigitar...')
         else:
-            digitouDireito = True
+            digitou_direito = True
 
     return txt
 
@@ -44,31 +44,12 @@ def opcaoEscolhida (mnu):
     print()
     return umTexto('Qual é a sua opção? ', 'Opção inválida', opcoesValidas)
 
-'''
-procura nom em agd e, se achou, retorna:
-uma lista contendo True e a posicao onde achou;
-MAS, se não achou, retorna:
-uma lista contendo False e a posição onde inserir,
-aquilo que foi buscado, mas nao foi encontrado,
-mantendo a ordenação da lista.
-'''
 def ondeEsta(nom, agd):
-    inicio = 0
-    final = len(agd) - 1
-    
-    # continue a implementação que, entre outras coisas, deverá
-    # calcular o meio, conforme segue:
-    meio = (inicio + final) // 2
-        
-    # a função deverá retornar a lista [True,meio] quando encontrar o
-    # nome procurado ou então a lista [False,inicio], quando não
-    # encontrar o nome procurado.
     
     inicio = 0
     final = len(agd) - 1
     nom_lower = nom.lower()
 
-##############################################
     while inicio <= final:
         
         meio = (inicio + final) // 2
@@ -217,21 +198,13 @@ def listar(agd):
         return 
     
     for contato in agd:
-        print('Nome: ',contato[0])
-        print('Aniversário: ',contato[1])
-        print('Endereço: ',contato[2])
-        print('Telefone: ',contato[3])
-        print('Celular: ',contato[4])
-        print('E-mail: ',contato[5])
+        print('Nome: ' , contato[0])
+        print('Aniversário: ' , contato[1])
+        print('Endereço: ' , contato[2])
+        print('Telefone: ' , contato[3])
+        print('Celular: ' , contato[4])
+        print('E-mail: ' , contato[5])
         print()
-        
-        
-        
-    
-    # implementar aqui a listagem de todos os dados de todos
-    # os contatos cadastrados
-    # printar aviso de que não há contatos cadastrados se
-    # esse for o caso
 
 def excluir(agd):
     print('Opção não implementada!')

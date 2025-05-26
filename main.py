@@ -66,7 +66,7 @@ def ondeEsta(nom, agd):
 
 def cadastrar(agd):
     while True:
-        nome = obtem_nome_validado("Digite o nome (ou 'cancela' para sair): ")
+        nome = obtem_nome_validado("\nDigite o nome (ou 'cancela' para sair): ")
 
         if nome.lower() == 'cancela':
             print("Cadastro não realizado.")
@@ -79,40 +79,40 @@ def cadastrar(agd):
         else:
             break
 
-    aniversario = pedir_data("Digite o aniversário: ")
-    endereco    = pedir_endereco("Digite o endereço: ")
-    telefone    = pedir_telefone("Digite o telefone fixo: ")
-    celular     = pedir_celular("Digite o celular: ")
-    email       = pedir_email("Digite o e-mail: ")
+    aniversario = pedir_data("\nDigite o aniversário: ")
+    endereco    = pedir_endereco("\nDigite o endereço: ")
+    telefone    = pedir_telefone("\nDigite o telefone fixo: ")
+    celular     = pedir_celular("\nDigite o celular: ")
+    email       = pedir_email("\nDigite o e-mail: ")
 
     contato = [ nome, aniversario, endereco, telefone, celular, email ]
     
     agd.insert(pos, contato)
-    print("Contato cadastrado com sucesso!")
+    print("\nContato cadastrado com sucesso!")
 
 def procurar(agd):
     
     if agd == [] or len(agd) == 0:
-        print('Não há contatos cadastrados!')
+        print('\nNão há contatos cadastrados!')
         return
     
     while True:
-        nome = obtem_nome_validado("Digite o nome a ser procurado, ou 'cancelar' para desistir: ")
+        nome = obtem_nome_validado("\nDigite o nome a ser procurado, ou 'cancelar' para desistir: ")
         
         if nome.lower() == 'cancelar':
-            print("Busca cancelada pelo usuário.")
+            print("\nBusca cancelada pelo usuário.")
             return
 
         achou, pos = ondeEsta(nome, agd)
 
         if achou:
             contato = agd[pos]
-            print('Nome: ', contato[0])
+            print('\nNome:      ', contato[0])
             print('Aniversário: ', contato[1])
-            print('Endereço: ', contato[2])
-            print('Telefone: ', contato[3])
-            print('Celular: ', contato[4])
-            print('E-mail: ', contato[5])
+            print('Endereço:    ', contato[2])
+            print('Telefone:    ', contato[3])
+            print('Celular:     ', contato[4])
+            print('E-mail:      ', contato[5])
             print()
             return
 
@@ -146,41 +146,51 @@ def atualizar(agd):
 
             if opc == 1:
                 nova_data = pedir_data('Adicionar nova data ou cancela para sair: ')
+                
                 if nova_data.lower() == 'cancela':
                     print('Atualização cancelada')
                     return
+                
                 contato[1] = nova_data
                 print('Aniversário atualizado com sucesso!')
 
             elif opc == 2:
                 novo_endereco = pedir_endereco('Adicionar novo endereço ou cancela para sair: ')
+                
                 if novo_endereco.lower() == 'cancela':
                     print('Atualização cancelada')
                     return
+                
                 contato[2] = novo_endereco
                 print('Endereço atualizado com sucesso')
 
             elif opc == 3:
                 novo_telefone = pedir_telefone('Adicionar novo telefone ou cancela para sair: ')
+                
                 if novo_telefone.lower() == 'cancela':
                     print('Atualização cancelada')
                     return
+                
                 contato[3] = novo_telefone
                 print('Telefone atualizado com sucesso')
                 
             elif opc == 4:
                 novo_celular = pedir_celular('Adicionar novo celular ou cancela para sair: ')
+                
                 if novo_celular.lower() == 'cancela':
                     print('Atualização cancelada')
                     return
+                
                 contato[4] = novo_celular
                 print('Celular atualizado com sucesso')
 
             elif opc == 5:
                 novo_email = pedir_email('Adicionar novo email ou cancela para sair: ')
+                
                 if novo_email.lower() == 'cancela':
                     print('Atualização cancelada')
                     return
+                
                 contato[5] = novo_email
                 print('Email atualizado com sucesso')
 
@@ -188,17 +198,18 @@ def atualizar(agd):
                 print('Atualizações finalizadas')
 
 def listar(agd):
+    
     if agd == [] or len(agd) == 0:
         print('Não há contatos cadastrados!')
         return 
     
     for contato in agd:
-        print('Nome: ' , contato[0])
+        print('\nNome:      ' , contato[0])
         print('Aniversário: ' , contato[1])
-        print('Endereço: ' , contato[2])
-        print('Telefone: ' , contato[3])
-        print('Celular: ' , contato[4])
-        print('E-mail: ' , contato[5])
+        print('Endereço:    ' , contato[2])
+        print('Telefone:    ' , contato[3])
+        print('Celular:     ' , contato[4])
+        print('E-mail:      ' , contato[5])
         print()
 
 def excluir(agd):
@@ -219,12 +230,12 @@ def excluir(agd):
 
         if achou:
             contato = agd[pos]
-            print('Nome: ',   contato[0])
+            print('\nNome:      ', contato[0])
             print('Aniversário: ', contato[1])
-            print('Endereço: ', contato[2])
-            print('Telefone: ', contato[3])
-            print('Celular: ', contato[4])
-            print('E-mail: ', contato[5])
+            print('Endereço:    ', contato[2])
+            print('Telefone:    ', contato[3])
+            print('Celular:     ', contato[4])
+            print('E-mail:      ', contato[5])
             print()
         
             confirmacao = input("Deseja realmente excluir este contato? (sim/não): ").lower()

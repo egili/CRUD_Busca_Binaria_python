@@ -113,7 +113,7 @@ def pedir_data(solicitacao: str) -> str:
         ano = pedir_ano()
     
         if is_data_valida(dia, mes, ano) != 'valido':
-            print('Tente Novamente\n')
+            print(f'Tente Novamente {is_data_valida(dia, mes, ano)}\n')
         else:
             is_data_validada = True
     

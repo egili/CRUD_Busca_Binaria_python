@@ -32,7 +32,7 @@ def pedir_celular(solicitacao: str) -> str:
             continue
 
         if len(celular) == 9:
-            celular =  definir_ddd_padrao(celular)
+            celular = definir_ddd_padrao(celular)
 
         if len(celular) != 11 and len(celular) != 9:
             print("Erro: Celular deve ter 9 (sem DDD) ou 11 (com DDD) dígitos")

@@ -3,7 +3,7 @@ def validar_endereco(endereco: str) -> str:
     if not endereco:
         return 'O endereço não pode estar vazio'
 
-    tem_letra = any(c.isalpha() for c in endereco)
+    tem_letra  = any(c.isalpha() for c in endereco)
     tem_numero = any(c.isdigit() for c in endereco)
 
     if not tem_letra or not tem_numero:

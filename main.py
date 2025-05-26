@@ -145,40 +145,47 @@ def atualizar(agd):
                 return
 
             if opc == 1:
-                nova_data = pedir_data('nova data ou cancela para sair: ')
+                nova_data = pedir_data('Adicionar nova data ou cancela para sair: ')
                 if nova_data.lower() == 'cancela':
-                    print('Atualização cancelada pelo usuário.')
+                    print('Atualização cancelada')
                     return
                 contato[1] = nova_data
-                print('Aniversário atualizado com sucesso!')
+                print('Aniversário atualizado com sucesso!')
+
             elif opc == 2:
-                novo_endereco = pedir_endereco('novo endereco ou cancela para sair: ')
+                novo_endereco = pedir_endereco('Adicionar novo endereço ou cancela para sair: ')
                 if novo_endereco.lower() == 'cancela':
-                    print('Atualização cancelada pelo usuário.')
+                    print('Atualização cancelada')
                     return
                 contato[2] = novo_endereco
-                print('Endereço atualizado com sucesso!')
+                print('Endereço atualizado com sucesso')
+
             elif opc == 3:
-                novo_telefone = pedir_telefone('novo telefone ou cancela para sair: ')
+                novo_telefone = pedir_telefone('Adicionar novo telefone ou cancela para sair: ')
                 if novo_telefone.lower() == 'cancela':
-                    print('Atualização cancelada pelo usuário.')
+                    print('Atualização cancelada')
                     return
                 contato[3] = novo_telefone
-                print('Telefone atualizado com sucesso!')
+                print('Telefone atualizado com sucesso')
+                
             elif opc == 4:
-                novo_celular = pedir_celular('novo celular ou cancela para sair: ')
+                novo_celular = pedir_celular('Adicionar novo celular ou cancela para sair: ')
                 if novo_celular.lower() == 'cancela':
-                    print('Atualização cancelada pelo usuário.')
+                    print('Atualização cancelada')
                     return
                 contato[4] = novo_celular
-                print('Celular atualizado com sucesso!')
-            else:
-                novo_email = pedir_email('novo email ou cancela para sair: ')
+                print('Celular atualizado com sucesso')
+
+            elif opc == 5:
+                novo_email = pedir_email('Adicionar novo email ou cancela para sair: ')
                 if novo_email.lower() == 'cancela':
-                    print('Atualização cancelada pelo usuário.')
+                    print('Atualização cancelada')
                     return
                 contato[5] = novo_email
-                print('Email atualizado com sucesso!')   
+                print('Email atualizado com sucesso')
+
+            else:
+                print('Atualizações finalizadas')
 
 def listar(agd):
     if agd == [] or len(agd) == 0:

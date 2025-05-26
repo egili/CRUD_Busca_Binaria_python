@@ -189,18 +189,6 @@ def atualizar(agd):
             else:
                 print('Atualizações finalizadas')
     
-    # Ficar mostrando então um SUBMENU oferecendo as opções de atualizar
-    # aniversário, ou endereco, ou telefone, ou celular, ou email, ou
-    # finalizar as atualizações; ficar pedindo para digitar a opção até
-    # digitar uma opção válida; realizar a atulização solicitada; tudo
-    # isso até ser escolhida a opção de finalizar as atualizações.
-    # REPARE que não foi prevista uma opção de atualizar o nome!
-    # USAR A FUNÇÃO opcaoEscolhida, JÁ IMPLEMENTADA, PARA FAZER O MENU.
-    # O usuário poderá desistir de atualizar, escrevendo "cancela" no
-    # momento de digitar o nome a ser atualizado, ou, até mesmo, no
-    # momento de digitar o aniversário ou o endereço ou o telefone (fixo)
-    # ou o celular ou ainda o e_mail (caso o usuário tenha optado por
-    # uma dessas atualizações, naturalmente).
 
 def listar(agd):
     if agd == [] or len(agd) == 0:

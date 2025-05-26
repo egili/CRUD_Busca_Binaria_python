@@ -4,13 +4,13 @@ from email_utils   import pedir_email
 from address_utils import pedir_endereco
 from phone_utils   import pedir_telefone, pedir_celular
 
-def apresenteSe ():
+def apresenteSe():
     print('+-------------------------------------------------------------+')
     print('|                                                             |')
     print('| AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |')
     print('|                                                             |')
-    print('| Brenda Maia Bergamasco - 25010054                           |')
-    print('| Eliseu Pereira Gili - 25009281                              |')
+    print('| Brenda Maia Bergamasco   - 25010054                         |')
+    print('| Eliseu Pereira Gili      - 25009281                         |')
     print('| Pietra Façanha Bortolato - 25002436                         |')
     print('|                                                             |')
     print('| Versão 2.0 de 24/maio/2025                                  |')
@@ -31,7 +31,7 @@ def umTexto(solicitacao, mensagem, valido):
 
     return txt
 
-def opcaoEscolhida (mnu):
+def opcaoEscolhida(mnu):
     print()
 
     opcoesValidas = []
@@ -90,128 +90,95 @@ def cadastrar(agd):
     agd.insert(pos, contato)
     print("Contato cadastrado com sucesso!")
 
-
-
 def procurar(agd):
+    
     if agd == [] or len(agd) == 0:
         print('Não há contatos cadastrados!')
         return
     
     while True:
-        nome = input("Digite o nome a ser procurado, ou 'cancelar' para desistir: ")
+        nome = obtem_nome_validado("Digite o nome a ser procurado, ou 'cancelar' para desistir: ")
+        
         if nome.lower() == 'cancelar':
             print("Busca cancelada pelo usuário.")
-            break
+            return
 
         achou, pos = ondeEsta(nome, agd)
 
         if achou:
             contato = agd[pos]
-            print('Nome: ',contato[0])
-            print('Aniversário: ',contato[1])
-            print('Endereço: ',contato[2])
-            print('Telefone: ',contato[3])
-            print('Celular: ',contato[4])
-            print('E-mail: ',contato[5])
+            print('Nome: ', contato[0])
+            print('Aniversário: ', contato[1])
+            print('Endereço: ', contato[2])
+            print('Telefone: ', contato[3])
+            print('Celular: ', contato[4])
+            print('E-mail: ', contato[5])
             print()
-            break
+            return
 
         else:
             print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
 
-
 def atualizar(agd):
-    print('Opção não implementada!')
-    
-    nome = ''
-    # Ficar solicitando a digitação de um nome a ser excluido da agenda,
-    # até que um nome cadastrado seja digitado.
-    submenu = [
-        'Atualizar Aniversário',\
-        'Atualizar Endereço',\
-        'Atualizar Telefone',\
-        'Atualizar Celular',\
-        'Atualizar Email',\
-        'Finalizar Atualizações'
-    ]
+    while True:
+        nome = obtem_nome_validado('Digite o nome para atualizar (ou "cancela" para sair): ')
+        if nome.lower() == 'cancela':
+            print('Atualização cancelada pelo usuário.')
+            return
+        achou, pos = ondeEsta(nome, agd)
+        if not achou:
+            print('Nome não encontrado. Tente novamente.')
+            continue
+        contato = agd[pos]
+        submenu = [
+            'Atualizar Aniversário',
+            'Atualizar Endereço',
+            'Atualizar Telefone',
+            'Atualizar Celular',
+            'Atualizar Email',
+            'Finalizar Atualizações'
+        ]
+        while True:
+            opc = int(opcaoEscolhida(submenu))
+            if opc == len(submenu):
+                print('Atualizações finalizadas.')
+                return
 
-    deseja_terminar_o_programa = False
-    while not deseja_terminar_o_programa:
-        opcao = int(opcaoEscolhida(submenu))
-
-        if opcao == 1:
-            novo_aniversario = pedir_data('Digite a nova data de aniversário ')
-            
-            if novo_aniversario == 'cancela':
-                deseja_terminar_o_programa = True
-
-            
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[1] = novo_aniversario
-                    print('Atualizado com sucesso')
-                
-            
-        elif opcao == 2:
-            novo_endereco=pedir_endereco('Digite o novo endereço ')
-
-            if novo_endereco == 'cancela':
-                deseja_terminar_o_programa = True
-
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[2] = novo_endereco
-                    print('Atualizado com sucesso')
-            
-        elif opcao == 3:
-            novo_telefone=pedir_telefone('Digite o novo telefone ')
-
-            if novo_telefone == 'cancela':
-                deseja_terminar_o_programa = True
-
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[3] = novo_telefone
-                    print('Atualizado com sucesso')
-
-            
-        elif opcao == 4:
-            novo_celular = pedir_celular('Digite o novo celular ')
-
-            if novo_celular == 'cancela':
-                deseja_terminar_o_programa=True
-
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[4] = novo_telefone
-                    print('Atualizado com sucesso')
-            
-        elif opcao == 5:
-            novo_email = pedir_email('Digite o novo email ')
-
-            if novo_email == 'cancela':
-                deseja_terminar_o_programa = True
-
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[5] = novo_email
-                    print('Atualizado com sucesso')            
-        else: 
-            print('Atualizações finalizadas')
-            
-    
-    # Ficar mostrando então um SUBMENU oferecendo as opções de atualizar
-    # aniversário, ou endereco, ou telefone, ou celular, ou email, ou
-    # finalizar as atualizações; ficar pedindo para digitar a opção até
-    # digitar uma opção válida; realizar a atulização solicitada; tudo
-    # isso até ser escolhida a opção de finalizar as atualizações.
-    # REPARE que não foi prevista uma opção de atualizar o nome!
-    # USAR A FUNÇÃO opcaoEscolhida, JÁ IMPLEMENTADA, PARA FAZER O MENU.
-    # O usuário poderá desistir de atualizar, escrevendo "cancela" no
-    # momento de digitar o nome a ser atualizado, ou, até mesmo, no
-    # momento de digitar o aniversário ou o endereço ou o telefone (fixo)
-    # ou o celular ou ainda o e_mail (caso o usuário tenha optado por
-    # uma dessas atualizações, naturalmente).
+            if opc == 1:
+                nova_data = pedir_data('nova data ou cancela para sair: ')
+                if nova_data.lower() == 'cancela':
+                    print('Atualização cancelada pelo usuário.')
+                    return
+                contato[1] = nova_data
+                print('Aniversário atualizado com sucesso!')
+            elif opc == 2:
+                novo_endereco = pedir_endereco('novo endereco ou cancela para sair: ')
+                if novo_endereco.lower() == 'cancela':
+                    print('Atualização cancelada pelo usuário.')
+                    return
+                contato[2] = novo_endereco
+                print('Endereço atualizado com sucesso!')
+            elif opc == 3:
+                novo_telefone = pedir_telefone('novo telefone ou cancela para sair: ')
+                if novo_telefone.lower() == 'cancela':
+                    print('Atualização cancelada pelo usuário.')
+                    return
+                contato[3] = novo_telefone
+                print('Telefone atualizado com sucesso!')
+            elif opc == 4:
+                novo_celular = pedir_celular('novo celular ou cancela para sair: ')
+                if novo_celular.lower() == 'cancela':
+                    print('Atualização cancelada pelo usuário.')
+                    return
+                contato[4] = novo_celular
+                print('Celular atualizado com sucesso!')
+            else:
+                novo_email = pedir_email('novo email ou cancela para sair: ')
+                if novo_email.lower() == 'cancela':
+                    print('Atualização cancelada pelo usuário.')
+                    return
+                contato[5] = novo_email
+                print('Email atualizado com sucesso!')   
 
 def listar(agd):
     if agd == [] or len(agd) == 0:
@@ -227,41 +194,43 @@ def listar(agd):
         print('E-mail: ' , contato[5])
         print()
 
-
-
 def excluir(agd):
-    if agd == [] or len(agd) == 0:  
-        print('Não há contatos cadastrados!')
-        return 
     
+    if agd == [] or len(agd) == 0:
+        print('Não há contatos cadastrados!')
+        return
+
     while True:
-        nome = input("Digite o nome a ser excluído, ou 'cancelar' para desistir: ")
+        
+        nome = obtem_nome_validado("Digite o nome a ser excluído, ou 'cancelar' para desistir: ")
+        
         if nome.lower() == 'cancelar':
             print("Exclusão cancelada.")
             break
 
-    achou, pos = ondeEsta(nome, agd) # TODO este item esta mal identado, precisa de um nivel a mais
+        achou, pos = ondeEsta(nome, agd)
 
         if achou:
             contato = agd[pos]
-            print('Nome: ',contato[0])
-            print('Aniversário: ',contato[1])
-            print('Endereço: ',contato[2])
-            print('Telefone: ',contato[3])
-            print('Celular: ',contato[4])
-            print('E-mail: ',contato[5])
+            print('Nome: ',   contato[0])
+            print('Aniversário: ', contato[1])
+            print('Endereço: ', contato[2])
+            print('Telefone: ', contato[3])
+            print('Celular: ', contato[4])
+            print('E-mail: ', contato[5])
             print()
-
-        confirmacao = input("Deseja realmente excluir este contato? (sim/não): ").lower()
-        if confirmacao == 'sim':
-            del agd[pos]
-            print("Contato excluído com sucesso.")
+        
+            confirmacao = input("Deseja realmente excluir este contato? (sim/não): ").lower()
+            
+            if confirmacao == 'sim':
+                del agd[pos]
+                print("Contato excluído com sucesso.")
+            else:
+                print("Contato não excluído.")
+            return
+        
         else:
-            print("Contato não excluído.")
-        break  # TODO: Esse break está fora do if achou. Vai sair do loop mesmo se não achou.
-
-    else:  # TODO: Esse else está solto. Só funciona com for/while sem break, mas está mal posicionado aqui.
-        print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
+            print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
 
 apresenteSe()
 

@@ -120,85 +120,74 @@ def procurar(agd):
             print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
 
 
+
 def atualizar(agd):
-    print('Opção não implementada!')
-    
-    nome = ''
-    # Ficar solicitando a digitação de um nome a ser excluido da agenda,
-    # até que um nome cadastrado seja digitado.
-    submenu = [
-        'Atualizar Aniversário',\
-        'Atualizar Endereço',\
-        'Atualizar Telefone',\
-        'Atualizar Celular',\
-        'Atualizar Email',\
-        'Finalizar Atualizações'
-    ]
+    while True:
+        nome = obtem_nome_validado('Digite o nome para atualizar (ou "cancela" para sair): ')
+        if nome.lower() == 'cancela':
+            print('Atualização cancelada pelo usuário.')
+            return
+        achou, pos = ondeEsta(nome, agd)
+        if not achou:
+            print('Nome não encontrado. Tente novamente.')
+            continue
+        contato = agd[pos]
+        submenu = [
+            'Atualizar Aniversário',
+            'Atualizar Endereço',
+            'Atualizar Telefone',
+            'Atualizar Celular',
+            'Atualizar Email',
+            'Finalizar Atualizações'
+        ]
+        while True:
+            opc = int(opcaoEscolhida(submenu))
+            if opc == len(submenu):
+                print('Atualizações finalizadas.')
+                return
 
-    deseja_terminar_o_programa = False
-    while not deseja_terminar_o_programa:
-        opcao = int(opcaoEscolhida(submenu))
+            if opc == 1:
+                nova_data = pedir_data('Adicionar nova data ou cancela para sair: ')
+                if nova_data.lower() == 'cancela':
+                    print('Atualização cancelada')
+                    return
+                contato[1] = nova_data
+                print('Aniversário atualizado com sucesso!')
 
-        if opcao == 1:
-            novo_aniversario = pedir_data('Digite a nova data de aniversário ')
-            
-            if novo_aniversario == 'cancela':
-                deseja_terminar_o_programa = True
+            elif opc == 2:
+                novo_endereco = pedir_endereco('Adicionar novo endereço ou cancela para sair: ')
+                if novo_endereco.lower() == 'cancela':
+                    print('Atualização cancelada')
+                    return
+                contato[2] = novo_endereco
+                print('Endereço atualizado com sucesso')
 
-            
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[1] = novo_aniversario
-                    print('Atualizado com sucesso')
+            elif opc == 3:
+                novo_telefone = pedir_telefone('Adicionar novo telefone ou cancela para sair: ')
+                if novo_telefone.lower() == 'cancela':
+                    print('Atualização cancelada')
+                    return
+                contato[3] = novo_telefone
+                print('Telefone atualizado com sucesso')
                 
-            
-        elif opcao == 2:
-            novo_endereco=pedir_endereco('Digite o novo endereço ')
+            elif opc == 4:
+                novo_celular = pedir_celular('Adicionar novo celular ou cancela para sair: ')
+                if novo_celular.lower() == 'cancela':
+                    print('Atualização cancelada')
+                    return
+                contato[4] = novo_celular
+                print('Celular atualizado com sucesso')
 
-            if novo_endereco == 'cancela':
-                deseja_terminar_o_programa = True
+            elif opc == 5:
+                novo_email = pedir_email('Adicionar novo email ou cancela para sair: ')
+                if novo_email.lower() == 'cancela':
+                    print('Atualização cancelada')
+                    return
+                contato[5] = novo_email
+                print('Email atualizado com sucesso')
 
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[2] = novo_endereco
-                    print('Atualizado com sucesso')
-            
-        elif opcao == 3:
-            novo_telefone=pedir_telefone('Digite o novo telefone ')
-
-            if novo_telefone == 'cancela':
-                deseja_terminar_o_programa = True
-
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[3] = novo_telefone
-                    print('Atualizado com sucesso')
-
-            
-        elif opcao == 4:
-            novo_celular = pedir_celular('Digite o novo celular ')
-
-            if novo_celular == 'cancela':
-                deseja_terminar_o_programa=True
-
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[4] = novo_telefone
-                    print('Atualizado com sucesso')
-            
-        elif opcao == 5:
-            novo_email = pedir_email('Digite o novo email ')
-
-            if novo_email == 'cancela':
-                deseja_terminar_o_programa = True
-
-            for contato in agd:
-                if contato[0] == nome:
-                    contato[5] = novo_email
-                    print('Atualizado com sucesso')            
-        else: 
-            print('Atualizações finalizadas')
-            
+            else:
+                print('Atualizações finalizadas')
     
     # Ficar mostrando então um SUBMENU oferecendo as opções de atualizar
     # aniversário, ou endereco, ou telefone, ou celular, ou email, ou

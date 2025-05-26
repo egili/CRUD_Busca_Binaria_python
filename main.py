@@ -4,13 +4,13 @@ from email_utils   import pedir_email
 from address_utils import pedir_endereco
 from phone_utils   import pedir_telefone, pedir_celular
 
-def apresenteSe ():
+def apresenteSe():
     print('+-------------------------------------------------------------+')
     print('|                                                             |')
     print('| AGENDA PESSOAL DE ANIVERSÁRIOS E FORMAS DE CONTATAR PESSOAS |')
     print('|                                                             |')
-    print('| Brenda Maia Bergamasco - 25010054                           |')
-    print('| Eliseu Pereira Gili - 25009281                              |')
+    print('| Brenda Maia Bergamasco   - 25010054                         |')
+    print('| Eliseu Pereira Gili      - 25009281                         |')
     print('| Pietra Façanha Bortolato - 25002436                         |')
     print('|                                                             |')
     print('| Versão 2.0 de 24/maio/2025                                  |')
@@ -31,7 +31,7 @@ def umTexto(solicitacao, mensagem, valido):
 
     return txt
 
-def opcaoEscolhida (mnu):
+def opcaoEscolhida(mnu):
     print()
 
     opcoesValidas = []
@@ -90,36 +90,34 @@ def cadastrar(agd):
     agd.insert(pos, contato)
     print("Contato cadastrado com sucesso!")
 
-
-
 def procurar(agd):
+    
     if agd == [] or len(agd) == 0:
         print('Não há contatos cadastrados!')
         return
     
     while True:
-        nome = input("Digite o nome a ser procurado, ou 'cancelar' para desistir: ")
+        nome = obtem_nome_validado("Digite o nome a ser procurado, ou 'cancelar' para desistir: ")
+        
         if nome.lower() == 'cancelar':
             print("Busca cancelada pelo usuário.")
-            break
+            return
 
         achou, pos = ondeEsta(nome, agd)
 
         if achou:
             contato = agd[pos]
-            print('Nome: ',contato[0])
-            print('Aniversário: ',contato[1])
-            print('Endereço: ',contato[2])
-            print('Telefone: ',contato[3])
-            print('Celular: ',contato[4])
-            print('E-mail: ',contato[5])
+            print('Nome: ', contato[0])
+            print('Aniversário: ', contato[1])
+            print('Endereço: ', contato[2])
+            print('Telefone: ', contato[3])
+            print('Celular: ', contato[4])
+            print('E-mail: ', contato[5])
             print()
-            break
+            return
 
         else:
             print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
-
-
 
 def atualizar(agd):
     while True:
@@ -188,7 +186,6 @@ def atualizar(agd):
 
             else:
                 print('Atualizações finalizadas')
-    
 
 def listar(agd):
     if agd == [] or len(agd) == 0:
@@ -204,41 +201,43 @@ def listar(agd):
         print('E-mail: ' , contato[5])
         print()
 
-
-
 def excluir(agd):
-    if agd == [] or len(agd) == 0:  
-        print('Não há contatos cadastrados!')
-        return 
     
+    if agd == [] or len(agd) == 0:
+        print('Não há contatos cadastrados!')
+        return
+
     while True:
-        nome = input("Digite o nome a ser excluído, ou 'cancelar' para desistir: ")
+        
+        nome = obtem_nome_validado("Digite o nome a ser excluído, ou 'cancelar' para desistir: ")
+        
         if nome.lower() == 'cancelar':
             print("Exclusão cancelada.")
             break
 
-    achou, pos = ondeEsta(nome, agd) # TODO este item esta mal identado, precisa de um nivel a mais
+        achou, pos = ondeEsta(nome, agd)
 
         if achou:
             contato = agd[pos]
-            print('Nome: ',contato[0])
-            print('Aniversário: ',contato[1])
-            print('Endereço: ',contato[2])
-            print('Telefone: ',contato[3])
-            print('Celular: ',contato[4])
-            print('E-mail: ',contato[5])
+            print('Nome: ',   contato[0])
+            print('Aniversário: ', contato[1])
+            print('Endereço: ', contato[2])
+            print('Telefone: ', contato[3])
+            print('Celular: ', contato[4])
+            print('E-mail: ', contato[5])
             print()
-
-        confirmacao = input("Deseja realmente excluir este contato? (sim/não): ").lower()
-        if confirmacao == 'sim':
-            del agd[pos]
-            print("Contato excluído com sucesso.")
+        
+            confirmacao = input("Deseja realmente excluir este contato? (sim/não): ").lower()
+            
+            if confirmacao == 'sim':
+                del agd[pos]
+                print("Contato excluído com sucesso.")
+            else:
+                print("Contato não excluído.")
+            return
+        
         else:
-            print("Contato não excluído.")
-        break  # TODO: Esse break está fora do if achou. Vai sair do loop mesmo se não achou.
-
-    else:  # TODO: Esse else está solto. Só funciona com for/while sem break, mas está mal posicionado aqui.
-        print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
+            print("Nome não encontrado. Tente novamente ou digite 'cancelar' para sair.")
 
 apresenteSe()
 
